@@ -14,7 +14,21 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  if a < 1 || b < 1 || c < 1
+    raise TriangleError.new("New instances can be raised directly.")
+  end
+  if a + b <= c || a + c <= b || b + c <= c
+    raise TriangleError.new("New instances can be raised directly.")
+  end
+  if a == b && a == c && b == c 
+    return :equilateral
+  end
+  if a == b || a == c || b == c
+    return :isosceles
+  end
+  if a != b && a != c && b != c
+    return :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.

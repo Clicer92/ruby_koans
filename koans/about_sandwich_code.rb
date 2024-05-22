@@ -82,12 +82,17 @@ class AboutSandwichCode < Neo::Koan
   def find_line2(file_name)
     # Rewrite find_line using the file_sandwich library function
     res = String.new
-    file_sandwich("example_file.txt") { |line| res << line.match(/e/)}
+    file_sandwich("example_file.txt") {
+      |file| 
+      while line = file.gets
+        return line if line.match(/e/)
+      end
+    }
     return res
   end
 
   def test_finding_lines2
-    assert_equal __, find_line2("example_file.txt")
+    assert_equal "test\n", find_line2("example_file.txt")
   end
 
   # ------------------------------------------------------------------
